@@ -1,0 +1,50 @@
+openapi: 3.0.1
+
+info:
+  title: "Service Boilerplate"
+  description: "A typescript boilerplate project for E2 Microservices"
+  version: "0.0.1"
+
+servers: 
+  - url: http://localhost:3000
+paths:
+  /version:
+    get:
+      tags: 
+        - about
+      summary: This endpoint returns the name, version and decription of the service
+      operationId: GetVersion
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/successfullVersion'
+components:
+  schemas:
+    successfullVersion:
+      title: ServiceVersion
+      type: object
+      properties:
+        name:
+          type: string
+          description: name of service
+          example: Service Boilerplate
+        version:
+          type: string
+          description: service version
+          example: 1.0.0
+        description:
+          type: string
+          description: description of service
+          example: this project is a boilerplate for new services
+
+# The security root level should be defined here however 
+# since the security scheme can be different by application it
+# will be left empty here. Go read about it at: 
+# http://idratherbewriting.com/learnapidoc/pubapis_openapi_step6_security_object.html
+
+tags:
+  - name: about
+    description: All endpoints dealing with general information about the service
