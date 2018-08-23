@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.service.name }}
+  annotations:
+    expose.config.fabric8.io/url-key: appPublicUrl
+data:
+  appVersion: "{{ .Values.image.tag }}"
